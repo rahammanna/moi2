@@ -1,11 +1,11 @@
 from concurrent.futures.thread import _worker
-import os, time, subprocess, sys, json, wave, re
+import os, time, subprocess, sys, json, wave, re, pathlib
 from flask import Flask, flash, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import numpy as np
 from vosk import Model, KaldiRecognizer,  SpkModel
 
-WORKDIR = '/home/rahammanna/moi2/'
+WORKDIR = pathlib.Path(__file__).parent.resolve()
 UPLOAD_FOLDER = WORKDIR + 'content/'
 ALLOWED_EXTENSIONS = {'mp3', 'wav', 'ogg', 'aac'}
 WAVFILE = UPLOAD_FOLDER + 'dia.wav'
