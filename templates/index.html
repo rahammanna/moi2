@@ -1,0 +1,38 @@
+<!doctype html>
+<title>Транскрибация и деоризация</title>
+<h1>Загрузите звуковой файл диалога на русском языке</h1>
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input id="submit" type=submit value=Upload>
+</form>
+<h3 id="response" hidden style="color: red">Дождитесь ответа от сервера</h3>
+<script>
+    button = document.getElementById("submit")
+    response = document.getElementById("response")
+    button.onclick = () => {
+        response.removeAttribute("hidden")
+    }
+</script>
+{% if response %}
+<h1>Транскрибированный текст</h1>
+<p>
+    {{ response.text }}
+</p>
+<h2>Информация для отладки</h2>
+<h3>Текст в массиве</h3>
+<p>
+    {{ response.text_array }}
+</p>
+<h3>Xvector</h3>
+<p>
+    {{ response.xvector }}
+</p>
+<h3>Расстояние до говорящего</h3>
+<p>
+    {{ response.speaker }}
+</p>
+<h3>Размер буфера</h3>
+<p>
+    {{ response.frames }}
+</p>
+{% endif %}
