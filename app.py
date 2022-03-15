@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 import numpy as np
 from vosk import Model, KaldiRecognizer,  SpkModel
 
-WORKDIR = pathlib.Path(__file__).parent.resolve()
+WORKDIR = str(pathlib.Path(__file__).parent.resolve()) + "/"
 UPLOAD_FOLDER = WORKDIR + 'content/'
 ALLOWED_EXTENSIONS = {'mp3', 'wav', 'ogg', 'aac'}
 WAVFILE = UPLOAD_FOLDER + 'dia.wav'
